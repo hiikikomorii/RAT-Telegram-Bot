@@ -1,0 +1,7 @@
+pyTelegramBotAPI
+pyautogui
+pynput
+plyer
+psutil
+pillow
+
