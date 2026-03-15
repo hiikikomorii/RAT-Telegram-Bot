@@ -27,7 +27,7 @@ only for windows
    ```
 3. **Run the bot:**
    ```shell
-   python RemoteBot.py
+   python ratbot.py
    ```
 4. **Use commands in Telegram to control your system**
 
